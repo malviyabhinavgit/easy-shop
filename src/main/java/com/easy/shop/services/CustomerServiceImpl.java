@@ -15,7 +15,7 @@ import java.util.UUID;
 @Service
 public class CustomerServiceImpl implements  CustomerService {
     private static final Logger log = LoggerFactory.getLogger(CustomerServiceImpl.class);
-    private static  long counter = 1000;
+
 
     private final CustomerRepository customerRepository;
 
