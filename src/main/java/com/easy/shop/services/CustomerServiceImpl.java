@@ -26,7 +26,7 @@ public class CustomerServiceImpl implements  CustomerService {
     @Override
     public void addCustomer(final String customerName, final String customerAddress){
         log.info("addCustomer {}",customerName,customerAddress);
-        Customer customer = new Customer(getCustomerId(), customerName, customerAddress);
+        Customer customer = new Customer(assignCustomerId(), customerName, customerAddress);
         this.customerRepository.addCustomer(customer);
     }
     @Override
@@ -50,7 +50,7 @@ public class CustomerServiceImpl implements  CustomerService {
         this.customerRepository.removeCustomer(customerId);
     }
 
-    private String getCustomerId() {
+    private String assignCustomerId() {
         return Long.toString(ByteBuffer.wrap(UUID.randomUUID().toString().getBytes()).getLong(), Character.MAX_RADIX);
 
     }
