@@ -1,14 +1,7 @@
 package com.easy.shop.entities;
 
 import com.easy.shop.constants.ProductCategory;
-
 import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
-import org.joda.time.format.ISODateTimeFormat;
-
-import java.io.Serializable;
-import javax.persistence.*;
 
 public class Product {
 
@@ -25,6 +18,16 @@ public class Product {
 	private DateTime  dateOfExpriy;
 
 	private DateTime  dateOfMFG;
+
+	public Product(String productID, String productName, ProductCategory productCategory, DateTime dateOfComingIntoEasyShop, DateTime dateOfSellFromEasyShop, DateTime dateOfExpriy, DateTime dateOfMFG) {
+		this.productID = productID;
+		this.productName = productName;
+		this.productCategory = productCategory;
+		this.dateOfComingIntoEasyShop = dateOfComingIntoEasyShop;
+		this.dateOfSellFromEasyShop = dateOfSellFromEasyShop;
+		this.dateOfExpriy = dateOfExpriy;
+		this.dateOfMFG = dateOfMFG;
+	}
 
 	public String getProductID() {
 		return productID;

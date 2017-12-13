@@ -1,11 +1,8 @@
 package com.easy.shop.entities;
 
-import java.util.List;
-
 import org.joda.time.DateTime;
 
-import java.io.Serializable;
-import javax.persistence.*;
+import java.util.List;
 
 
 public class Visit {
@@ -14,6 +11,13 @@ public class Visit {
 	private Customer customer;
 	private List<Product> purchase;
 	private DateTime visitDateBillTimong;
+
+	public Visit(String visitId, Customer customer, List<Product> purchase, DateTime visitDateBillTimong) {
+		this.visitId = visitId;
+		this.customer = customer;
+		this.purchase = purchase;
+		this.visitDateBillTimong = visitDateBillTimong;
+	}
 
 	public String getVisitId() {
 		return visitId;

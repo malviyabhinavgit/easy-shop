@@ -17,22 +17,27 @@ public class ProductRepositoryImpl implements ProductRepository{
     private List<Product> products = new ArrayList<>();
     @Override
     public void addProduct(Product product){
+        log.info("addProduct {}",product);
         products.add(product);
     }
     @Override
     public Product getProduct(String productId){
+        log.info("getProduct {}",productId);
         return products.parallelStream().filter(p->productId.equals(p.getProductID())).findFirst().get();
     }
     @Override
     public List<Product> getProductByName(String productName){
+        log.info("getProductByName {}",productName);
        return products.parallelStream().filter(p->productName.equals(p.getProductName())).collect(Collectors.toList());
     }
     @Override
     public List<Product> getAllProducts(){
+        log.info("getAllProducts ");
         return products;
     }
     @Override
     public void removeProduct(Product product){
+        log.info("removeProduct {}",product);
         products = products.parallelStream().filter(p->product.equals(p)==false).collect(Collectors.toList());
     }
 }
