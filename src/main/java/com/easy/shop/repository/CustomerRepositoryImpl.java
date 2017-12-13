@@ -16,7 +16,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     private List<Customer> customers = new ArrayList<>();
     @Override
-    public void addCustomer(Customer customer){
+    public void addCustomer(final Customer customer){
         log.info("addCustomer {}",customer);
         customers.add(customer);
     }
@@ -26,7 +26,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         return customers.parallelStream().filter(customer -> customer.getCustomerId().equals(customerId)).findFirst();
     }
     @Override
-    public List<Customer> getCustomerByName(String customerName){
+    public List<Customer> getCustomerByName(final String customerName){
         log.info("getCustomerByName {}",customerName);
         return customers.parallelStream().filter(c->customerName.equals(c.getCustomerName())).collect(Collectors.toList());
     }
@@ -35,7 +35,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         return customers;
     }
     @Override
-    public void removeCustomer(String customerId){
+    public void removeCustomer(final String customerId){
         log.info("removeCustomer {}",customerId);
         customers = customers.parallelStream().filter(c->c.getCustomerId().equals(customerId)==false).collect(Collectors.toList());
 }

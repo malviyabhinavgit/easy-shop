@@ -1,51 +1,47 @@
 package com.easy.shop.entities;
 
-import java.util.List;
-
 import org.joda.time.DateTime;
 
-import java.io.Serializable;
-import javax.persistence.*;
+import java.util.List;
 
 
 public class Visit {
 
-	private String visitId;
-	private Customer customer;
-	private List<Product> purchase;
+	private final String visitId;
+	private final Customer customer;
+	private final List<Product> purchase;
 	private DateTime visitDateBillTimong;
+
+	public Visit(String visitId, Customer customer, List<Product> purchase, DateTime visitDateBillTimong) {
+		this.visitId = visitId;
+		this.customer = customer;
+		this.purchase = purchase;
+		this.visitDateBillTimong = visitDateBillTimong;
+	}
 
 	public String getVisitId() {
 		return visitId;
 	}
 
-	public void setVisitId(String visitId) {
-		this.visitId = visitId;
-	}
+
 
 	public Customer getCustomer() {
 		return customer;
 	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
+
 
 	public List<Product> getPurchase() {
 		return purchase;
 	}
 
-	public void setPurchase(List<Product> purchase) {
-		this.purchase = purchase;
-	}
+
 
 	public DateTime getVisitDateBillTimong() {
 		return visitDateBillTimong;
 	}
 
-	public void setVisitDateBillTimong(DateTime visitDateBillTimong) {
-		this.visitDateBillTimong = visitDateBillTimong;
-	}
+
 
 	@Override
 	public boolean equals(Object o) {

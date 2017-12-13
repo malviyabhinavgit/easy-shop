@@ -1,86 +1,64 @@
 package com.easy.shop.entities;
 
 import com.easy.shop.constants.ProductCategory;
-
 import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
-import org.joda.time.format.ISODateTimeFormat;
-
-import java.io.Serializable;
-import javax.persistence.*;
 
 public class Product {
 
-    private String productID;
+	private final String productID;
 
-	private String productName;
+	private final String productName;
 
-	private ProductCategory productCategory;
+	private final ProductCategory productCategory;
 
-	private DateTime  dateOfComingIntoEasyShop;
+	private final DateTime  dateOfComingIntoEasyShop;
 
-	private DateTime  dateOfSellFromEasyShop;
+	private final DateTime  dateOfSellFromEasyShop;
 
-	private DateTime  dateOfExpriy;
+	private final DateTime  dateOfExpriy;
 
-	private DateTime  dateOfMFG;
+	private final DateTime  dateOfMFG;
+
+	public Product(String productID, String productName, ProductCategory productCategory, DateTime dateOfComingIntoEasyShop, DateTime dateOfSellFromEasyShop, DateTime dateOfExpriy, DateTime dateOfMFG) {
+		this.productID = productID;
+		this.productName = productName;
+		this.productCategory = productCategory;
+		this.dateOfComingIntoEasyShop = dateOfComingIntoEasyShop;
+		this.dateOfSellFromEasyShop = dateOfSellFromEasyShop;
+		this.dateOfExpriy = dateOfExpriy;
+		this.dateOfMFG = dateOfMFG;
+	}
 
 	public String getProductID() {
 		return productID;
-	}
-
-	public void setProductID(String productID) {
-		this.productID = productID;
 	}
 
 	public String getProductName() {
 		return productName;
 	}
 
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
 
 	public ProductCategory getProductCategory() {
 		return productCategory;
 	}
 
-	public void setProductCategory(ProductCategory productCategory) {
-		this.productCategory = productCategory;
-	}
 
 	public DateTime getDateOfComingIntoEasyShop() {
 		return dateOfComingIntoEasyShop;
-	}
-
-	public void setDateOfComingIntoEasyShop(DateTime dateOfComingIntoEasyShop) {
-		this.dateOfComingIntoEasyShop = dateOfComingIntoEasyShop;
 	}
 
 	public DateTime getDateOfSellFromEasyShop() {
 		return dateOfSellFromEasyShop;
 	}
 
-	public void setDateOfSellFromEasyShop(DateTime dateOfSellFromEasyShop) {
-		this.dateOfSellFromEasyShop = dateOfSellFromEasyShop;
-	}
-
 	public DateTime getDateOfExpriy() {
 		return dateOfExpriy;
-	}
-
-	public void setDateOfExpriy(DateTime dateOfExpriy) {
-		this.dateOfExpriy = dateOfExpriy;
 	}
 
 	public DateTime getDateOfMFG() {
 		return dateOfMFG;
 	}
 
-	public void setDateOfMFG(DateTime dateOfMFG) {
-		this.dateOfMFG = dateOfMFG;
-	}
 
 	@Override
 	public boolean equals(Object o) {
