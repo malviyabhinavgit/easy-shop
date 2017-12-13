@@ -36,8 +36,8 @@ public class ProductRepositoryImpl implements ProductRepository{
         return products;
     }
     @Override
-    public void removeProduct(final Product product){
-        log.info("removeProduct {}",product);
-        products = products.parallelStream().filter(p->product.equals(p)==false).collect(Collectors.toList());
+    public void removeProduct(final String productId){
+        log.info("removeProduct {}",productId);
+        products = products.parallelStream().filter(p-> p.getProductID().equals(productId)==false).collect(Collectors.toList());
     }
 }

@@ -46,9 +46,9 @@ public class ProductServiceImpl implements ProductService{
         return this.productRepository.getAllProducts();
     }
     @Override
-    public void removeProduct(final Product product){
-        log.info("removeProduct {}",product);
-        this.productRepository.removeProduct(product);
+    public void removeProduct(final String productId){
+        log.info("removeProduct {}",productId);
+        this.productRepository.removeProduct(productId);
     }
 
     private String assignProductId() {
