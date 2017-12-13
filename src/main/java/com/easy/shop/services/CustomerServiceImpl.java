@@ -23,12 +23,14 @@ public class CustomerServiceImpl implements  CustomerService {
     CustomerServiceImpl(CustomerRepository customerRepository){
         this.customerRepository= customerRepository;
     }
+
     @Override
     public void addCustomer(final String customerName, final String customerAddress){
-        log.info("addCustomer {}",customerName,customerAddress);
+        log.info("addCustomer {} {}",customerName,customerAddress);
         Customer customer = new Customer(assignCustomerId(), customerName, customerAddress);
         this.customerRepository.addCustomer(customer);
     }
+
     @Override
     public Optional<Customer>  getCustomer(final String customerId){
         log.info("getCustomer {}",customerId);
@@ -40,10 +42,12 @@ public class CustomerServiceImpl implements  CustomerService {
         log.info("getCustomerByName {}",customerName);
         return this.customerRepository.getCustomerByName(customerName);
     }
+
     @Override
     public List<Customer> getAllCustomers(){
         return this.customerRepository.getAllCustomers();
     }
+
     @Override
     public void removeCustomer(final String customerId){
         log.info("removeCustomer {}",customerId);
