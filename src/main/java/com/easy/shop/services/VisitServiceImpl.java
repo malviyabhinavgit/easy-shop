@@ -40,7 +40,7 @@ public class VisitServiceImpl implements VisitService{
         return this.visitRepository.getAllVisit();
     }
     @Override
-    public List<Visit> getBetweenDates(DateTime fromDate, DateTime toDate){
+    public List<Visit> getBetweenDates(final DateTime fromDate, final DateTime toDate){
         log.info("getBetweenDates {},{}",fromDate,toDate);
         return this.visitRepository.getAllVisit().parallelStream().filter(v->(fromDate.compareTo(v.getVisitDateBillTimong()) *
                 toDate.compareTo(v.getVisitDateBillTimong()) >= 0)).collect(Collectors.toList());

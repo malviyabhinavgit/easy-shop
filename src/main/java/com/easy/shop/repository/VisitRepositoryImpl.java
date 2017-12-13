@@ -15,7 +15,7 @@ public class VisitRepositoryImpl implements VisitRepository {
 
     private List<Visit> visits = new ArrayList<>();
     @Override
-    public void registerVisit(Visit visit){
+    public void registerVisit(final Visit visit){
         visits.add(visit);
     }
     @Override

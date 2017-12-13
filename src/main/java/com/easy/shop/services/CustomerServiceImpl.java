@@ -36,7 +36,7 @@ public class CustomerServiceImpl implements  CustomerService {
     }
 
     @Override
-    public List<Customer> getCustomerByName(String customerName){
+    public List<Customer> getCustomerByName( final String customerName){
         log.info("getCustomerByName {}",customerName);
         return this.customerRepository.getCustomerByName(customerName);
     }
@@ -45,7 +45,7 @@ public class CustomerServiceImpl implements  CustomerService {
         return this.customerRepository.getAllCustomers();
     }
     @Override
-    public void removeCustomer(String customerId){
+    public void removeCustomer(final String customerId){
         log.info("removeCustomer {}",customerId);
         this.customerRepository.removeCustomer(customerId);
     }

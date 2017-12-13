@@ -2,16 +2,15 @@ package com.easy.shop.entities;
 
 
 public class Customer {
-	final private String customerId;
+	private final String customerId;
 
-	final private String customerName;
+	private final  String customerName;
 
-	final private String customerAddress;
+	private final String customerAddress;
 
 	public String getCustomerId() {
 		return customerId;
 	}
-
 
 
 	public String getCustomerName() {

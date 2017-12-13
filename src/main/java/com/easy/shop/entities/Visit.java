@@ -7,9 +7,9 @@ import java.util.List;
 
 public class Visit {
 
-	private String visitId;
-	private Customer customer;
-	private List<Product> purchase;
+	private final String visitId;
+	private final Customer customer;
+	private final List<Product> purchase;
 	private DateTime visitDateBillTimong;
 
 	public Visit(String visitId, Customer customer, List<Product> purchase, DateTime visitDateBillTimong) {
@@ -23,33 +23,25 @@ public class Visit {
 		return visitId;
 	}
 
-	public void setVisitId(String visitId) {
-		this.visitId = visitId;
-	}
+
 
 	public Customer getCustomer() {
 		return customer;
 	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
+
 
 	public List<Product> getPurchase() {
 		return purchase;
 	}
 
-	public void setPurchase(List<Product> purchase) {
-		this.purchase = purchase;
-	}
+
 
 	public DateTime getVisitDateBillTimong() {
 		return visitDateBillTimong;
 	}
 
-	public void setVisitDateBillTimong(DateTime visitDateBillTimong) {
-		this.visitDateBillTimong = visitDateBillTimong;
-	}
+
 
 	@Override
 	public boolean equals(Object o) {

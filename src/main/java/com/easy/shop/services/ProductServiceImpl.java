@@ -25,18 +25,18 @@ public class ProductServiceImpl implements ProductService{
         this.productRepository = productRepository;
     }
     @Override
-    public void addProduct(String productName, ProductCategory productCategory, DateTime dateOfComingIntoEasyShop, DateTime dateOfSellFromEasyShop, DateTime dateOfExpriy, DateTime dateOfMFG){
+    public void addProduct(final String productName,final  ProductCategory productCategory, final DateTime dateOfComingIntoEasyShop, final DateTime dateOfSellFromEasyShop, final DateTime dateOfExpriy, final DateTime dateOfMFG){
         log.info("addProduct {},{},{},{},{},",productCategory,dateOfComingIntoEasyShop,dateOfSellFromEasyShop,dateOfExpriy,dateOfMFG );
         Product product = new Product(assignProductId(),productName,productCategory,dateOfComingIntoEasyShop,dateOfSellFromEasyShop,dateOfExpriy,dateOfMFG );
         this.productRepository.addProduct(product);
     }
     @Override
-    public Product getProduct(String productId){
+    public Product getProduct(final String productId){
         log.info("getProduct {}",productId);
         return this.productRepository.getProduct(productId);
     }
     @Override
-    public List<Product> getProductByName(String productName){
+    public List<Product> getProductByName(final String productName){
         log.info("getProductByName {}",productName);
         return this.productRepository.getProductByName(productName);
     }
@@ -46,7 +46,7 @@ public class ProductServiceImpl implements ProductService{
         return this.productRepository.getAllProducts();
     }
     @Override
-    public void removeProduct(Product product){
+    public void removeProduct(final Product product){
         log.info("removeProduct {}",product);
         this.productRepository.removeProduct(product);
     }
