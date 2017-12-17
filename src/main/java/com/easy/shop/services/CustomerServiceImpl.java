@@ -1,5 +1,6 @@
 package com.easy.shop.services;
 
+import com.easy.shop.dto.CustomerDTO;
 import com.easy.shop.entities.Customer;
 import com.easy.shop.repository.CustomerRepository;
 import org.slf4j.Logger;
@@ -25,9 +26,11 @@ public class CustomerServiceImpl implements  CustomerService {
     }
 
     @Override
-    public void addCustomer(final String customerName, final String customerAddress){
-        log.info("addCustomer {} {}",customerName,customerAddress);
-        Customer customer = new Customer(assignCustomerId(), customerName, customerAddress);
+    public void addCustomer(final CustomerDTO customerDTO){
+        log.info("addCustomer {} ",customerDTO);
+        Customer customer = new Customer(assignCustomerId(),customerDTO.getCustomerName(),customerDTO.getAge(),
+                customerDTO.getCustomerAddressFirstLine(),customerDTO.getCustomerAddressSecondLine(),
+                customerDTO.getCusotmerType(),customerDTO.getRegistrationDate());
         this.customerRepository.addCustomer(customer);
     }
 

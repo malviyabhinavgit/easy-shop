@@ -10,19 +10,19 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-import static springfox.documentation.builders.PathSelectors.regex;
-
 
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
     @Bean
-    public Docket productApi() {
+    public Docket customerApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .select()                 .apis(RequestHandlerSelectors.basePackage("com.easy.shop.controllers"))
-                .paths(regex("/Customer.*"))
+                .apiInfo(metaData())
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.easy.shop.controllers"))
                 .build();
     }
+
 
     private ApiInfo metaData() {
         ApiInfo apiInfo = new ApiInfo(

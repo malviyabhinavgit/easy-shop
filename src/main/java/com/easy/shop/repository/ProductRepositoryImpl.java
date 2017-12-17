@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Repository
@@ -21,9 +22,9 @@ public class ProductRepositoryImpl implements ProductRepository{
         products.add(product);
     }
     @Override
-    public Product getProduct(final String productId){
+    public Optional<Product> getProduct(final String productId){
         log.info("getProduct {}",productId);
-        return products.parallelStream().filter(p->productId.equals(p.getProductID())).findFirst().get();
+        return products.parallelStream().filter(p->productId.equals(p.getProductID())).findFirst();
     }
     @Override
     public List<Product> getProductByName(final String productName){
