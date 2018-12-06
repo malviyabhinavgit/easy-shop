@@ -6,7 +6,7 @@ import org.joda.time.DateTime;
 /**
  * Created by Abhinav Malviya on 12/17/2017.
  */
-public class CustomerDTO {
+public class  CustomerDTO {
     private String customerName;
     private int age;
     private String customerAddressFirstLine;

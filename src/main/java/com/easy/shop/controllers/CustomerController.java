@@ -8,6 +8,8 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,9 +21,13 @@ public class CustomerController {
 
     private  final CustomerService  customerService;
 
+    private  final JavaMailSender emailSender;
+
     @Autowired
-    CustomerController (CustomerService customerService){
+    CustomerController (CustomerService customerService, JavaMailSender emailSender){
      this.customerService = customerService;
+     this.emailSender = emailSender;
+
     }
 
     @RequestMapping(path="register" ,method = RequestMethod.POST)
@@ -31,6 +37,9 @@ public class CustomerController {
             @RequestBody CustomerDTO customerDTO) {
         if (isValidCustomerDTO(customerDTO)) {
             this.customerService.addCustomer(customerDTO);
+            sendSimpleMessage("abhinavmalviya.nitrkl@gmail.com", "Customer was added sucessfully","This is to confirm" +
+                    "that customer with the name"+customerDTO.getCustomerName()+
+            "was saved successfully in our records.\n Thank you for visiting easy shop. \n Team \n Easy Shop.");
             return ResponseEntity.status(HttpStatus.CREATED).body("created");
         }else{
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed");
@@ -126,6 +135,16 @@ public class CustomerController {
 
     private boolean isValidAge(int value){
         return value >0;
+    }
+
+    private void sendSimpleMessage(
+            String to, String subject, String text) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(to);
+        message.setSubject(subject);
+        message.setText(text);
+        emailSender.send(message);
+
     }
 
 }

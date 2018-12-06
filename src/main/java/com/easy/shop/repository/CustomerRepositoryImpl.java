@@ -28,7 +28,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     @Override
     public List<Customer> getCustomerByName(final String customerName){
         log.info("getCustomerByName {}",customerName);
-        return customers.parallelStream().filter(c->customerName.equals(c.getCustomerName())).collect(Collectors.toList());
+        return customers.parallelStream().filter(c->c.getCustomerName().contains(customerName)).collect(Collectors.toList());
     }
     @Override
     public List<Customer> getAllCustomers(){
@@ -37,7 +37,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     @Override
     public void removeCustomer(final String customerId){
         log.info("removeCustomer {}",customerId);
-        customers = customers.parallelStream().filter(c->c.getCustomerId().equals(customerId)==false).collect(Collectors.toList());
+        customers = customers.parallelStream().filter(c->!c.getCustomerId().equals(customerId)).collect(Collectors.toList());
 }
 
 }
