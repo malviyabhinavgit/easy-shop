@@ -29,9 +29,9 @@ public class EmailServiceImpl implements EmailService {
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setReplyTo("no-reply@gmail.com");
         msg.setTo(new String[]{customer.getCustomerEmailId()});
-        msg.setCc("abhinavmalviya.nitrkl@gmail.com");
+        msg.setCc("easyshopenterprise@gmail.com");
         msg.setSubject("You are now customer of Easy Shop. Have a happy shopping!");
-        msg.setText("We are pleased to have you onboard with us.\n" + customer.sharedInfoWithCustomer());
+        msg.setText("We are pleased to have you on-board with us.\n" + customer.sharedInfoWithCustomer());
         javaMailSender.send(msg);
     }
 }
