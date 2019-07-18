@@ -2,6 +2,7 @@ package com.easy.shop.controllers;
 
 import com.easy.shop.entities.Customer;
 import com.easy.shop.services.CustomerService;
+import com.easy.shop.services.EmailService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,14 +13,17 @@ public class CustomerController {
 
     private  final CustomerService  customerService;
 
-    CustomerController (CustomerService customerService){
+    private final EmailService emailService;
+
+    CustomerController(CustomerService customerService, EmailService emailService) {
      this.customerService = customerService;
+        this.emailService = emailService;
     }
 
-    @RequestMapping(path="{customerName}/{customerAddress}" ,method = RequestMethod.POST)
+    @RequestMapping(path = "{customerName}/{customerAddress}/{emailAddress:.+}", method = RequestMethod.POST)
     public String addCustomer(@PathVariable String customerName,
-                           @PathVariable String customerAddress) {
-        this.customerService.addCustomer(customerName,customerAddress);
+                              @PathVariable String customerAddress, @PathVariable String emailAddress) {
+        this.emailService.notifyCustomerEmail(this.customerService.addCustomer(customerName, customerAddress, emailAddress));
                 return "Customer successfully added";
     }
 

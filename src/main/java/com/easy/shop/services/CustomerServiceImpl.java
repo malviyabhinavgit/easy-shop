@@ -25,10 +25,12 @@ public class CustomerServiceImpl implements  CustomerService {
     }
 
     @Override
-    public void addCustomer(final String customerName, final String customerAddress){
-        log.info("addCustomer {} {}",customerName,customerAddress);
-        Customer customer = new Customer(assignCustomerId(), customerName, customerAddress);
+    public Customer addCustomer(final String customerName, final String customerAddress, final String emailId) {
+        log.info("addCustomer {} {} {}", customerName, customerAddress, emailId);
+        Customer customer = new Customer(assignCustomerId(), customerName, customerAddress, emailId);
+
         this.customerRepository.addCustomer(customer);
+        return customer;
     }
 
     @Override

@@ -8,6 +8,8 @@ public class Customer {
 
 	private final String customerAddress;
 
+	private final String customerEmailId;
+
 	public String getCustomerId() {
 		return customerId;
 	}
@@ -17,10 +19,15 @@ public class Customer {
 		return customerName;
 	}
 
-	public Customer(String customerId, String customerName, String customerAddress) {
+	public Customer(String customerId, String customerName, String customerAddress, String customerEmailId) {
 		this.customerId = customerId;
 		this.customerName = customerName;
 		this.customerAddress = customerAddress;
+		this.customerEmailId = customerEmailId;
+	}
+
+	public String getCustomerEmailId() {
+		return customerEmailId;
 	}
 
 
@@ -58,6 +65,14 @@ public class Customer {
 				"customerId='" + customerId + '\'' +
 				", customerName='" + customerName + '\'' +
 				", customerAddress='" + customerAddress + '\'' +
+				", emailAddress='" + customerEmailId + '\'' +
 				'}';
+	}
+
+	public String sharedInfoWithCustomer() {
+		return "Customer Details:\n" +
+				"customerName='" + customerName + '\'' + '\n' +
+				"customerAddress='" + customerAddress + '\'' + '\n' +
+				"emailAddress='" + customerEmailId + '\'' + '\n';
 	}
 }
